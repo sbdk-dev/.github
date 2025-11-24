@@ -9,7 +9,7 @@ A complete open-source ecosystem demonstrating how to build local-first data and
 Five interconnected reference implementations showing how to build a complete local-first analytics platform:
 
 ### 1. 🏗️ [SBDK.dev](https://github.com/sbdk-dev/sbdk-dev) - The Foundation
-**Data Pipeline Framework** | Python | Active
+**Data Pipeline Framework** | Python | Archived
 
 The core framework providing local-first data pipelines with DLT (ingestion), dbt (transformation), and DuckDB (analytics).
 
