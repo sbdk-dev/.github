@@ -1,111 +1,148 @@
-# SBDK.dev - Local-First Data & AI Ecosystem
+# SBDK: Local-First Data & AI Development Tools
 
-A complete open-source ecosystem demonstrating how to build local-first data and AI tools—from data ingestion to AI-powered insights—all running on your laptop, without cloud dependencies.
+**Build and test complete data pipelines in 30 seconds. Zero cloud setup, zero Docker, zero cost.**
 
----
-
-## 🌟 The Ecosystem
-
-Five interconnected reference implementations showing how to build a complete local-first analytics platform:
-
-### 1. 🏗️ [SBDK.dev](https://github.com/sbdk-dev/sbdk-dev) - The Foundation
-**Data Pipeline Framework** | Python | Archived
-
-The core framework providing local-first data pipelines with DLT (ingestion), dbt (transformation), and DuckDB (analytics).
-
-- Lightning-fast setup with `uv`
-- 100% local—no cloud dependencies
-- Complete ingestion → transformation → analytics toolkit
-- Hot reload for iterative development
-
-→ **[Explore SBDK.dev](https://github.com/sbdk-dev/sbdk-dev)**
+Five production-ready reference implementations demonstrating how to build local-first data and AI tools—from pipeline sandboxes to ML-in-SQL to conversational analytics.
 
 ---
 
-### 2. 🧠 [Mallard (local-inference)](https://github.com/sbdk-dev/local-inference) - Intelligence Layer
-**ML/AI in SQL** | Rust | Archived
+## The Problem We Solve
 
-A DuckDB extension adding ML/AI capabilities directly in SQL. Run zero-shot predictions, generate embeddings, and get feature importance—no separate ML infrastructure.
+**Traditional data pipeline development is slow and expensive:**
+- Setting up a dev environment takes days (Docker, cloud accounts, configuration)
+- Testing requires deploying to cloud infrastructure ($$$)
+- Iteration cycles are painfully slow (push → wait → test → repeat)
+- Breaking production is expensive and stressful
 
-- Zero-shot ML: Classification and regression without training
-- SQL interface: All functionality as SQL UDFs
-- Rust performance: Built as a DuckDB extension
-- Embeddings & explainability
+**SBDK tools run everything locally:**
+- Full dev environment in 30 seconds (1 command)
+- Test everything safely on your laptop (zero cost)
+- Instant iteration cycles (30-second feedback loops)
+- Production patterns validated before deployment
+
+---
+
+## Who Should Use These?
+
+### 🛠️ **Data Engineers**
+Testing dbt models and data pipelines without cloud infrastructure
+
+**Use SBDK.dev** to get instant local DuckDB + dbt + DLT environment, test transformations, iterate fast
+
+### 🏗️ **Platform Engineers**
+Building data tools and evaluating infrastructure patterns
+
+**Study the codebases** to see professional CLI architecture, MCP server patterns, exception handling, testing frameworks
+
+### 📚 **Data Engineering Students**
+Learning modern data stack without deployment complexity
+
+**Run working examples** of dbt transformations, DuckDB queries, Rust extensions, AI integrations—all on your laptop
+
+---
+
+## The 5 Projects
+
+**Core Foundation**
+
+### 1. 🏗️ [SBDK.dev](https://github.com/sbdk-dev/sbdk-dev) - Local Pipeline Sandbox
+**Get a complete data pipeline running in 30 seconds** | Python | Active
+
+A local development sandbox giving you DuckDB + dbt + DLT in 1 command. No Docker, no cloud, no configuration.
+
+```bash
+pip install sbdk-dev
+sbdk init my_project && cd my_project
+sbdk run  # Data generation → ingestion → transformation
+sbdk query "SELECT * FROM orders_daily LIMIT 10"
+```
+
+**Solves:** Days of environment setup → 30 seconds. Cloud testing costs → zero. Slow iteration → instant feedback.
+
+→ **[Try SBDK.dev](https://github.com/sbdk-dev/sbdk-dev)**
+
+**Extensions & Enhancements**
+
+### 2. 🧠 [Mallard (local-inference)](https://github.com/sbdk-dev/local-inference) - ML in SQL
+**Run ML models directly in your database—no separate infrastructure** | Rust | Archived
+
+DuckDB extension for zero-shot predictions, embeddings, and feature importance. Write SQL, get ML.
+
+```sql
+-- Run zero-shot classification in SQL
+SELECT predict_category(description) as category FROM products;
+
+-- Generate embeddings
+SELECT embed_text(content) as vector FROM documents;
+```
+
+**Solves:** Separate ML infrastructure → All in SQL. Model training complexity → Zero-shot inference. Python overhead → Rust performance.
 
 → **[Explore Mallard](https://github.com/sbdk-dev/local-inference)**
 
----
+### 3. 🔍 [Semantic Tracer](https://github.com/sbdk-dev/semantic-tracer) - Lineage Visualization
+**Understand complex dbt projects with interactive graphs** | Rust + TypeScript | Archived
 
-### 3. 🔍 [Semantic Tracer](https://github.com/sbdk-dev/semantic-tracer) - Visualization
-**dbt Semantic Layer Visualization** | Rust + TypeScript | Archived
+Desktop app visualizing dbt semantic layers. See how your metrics, dimensions, and entities connect.
 
-Visualizes dbt semantic layers with interactive lineage graphs. Understand how metrics, dimensions, and entities connect—all processed locally.
+- Interactive lineage graphs (React Flow)
+- Direct `semantic_models.yml` integration
+- Tauri desktop app (fast Rust backend)
 
-- Interactive React Flow graphs
-- Direct dbt integration
-- Tauri desktop app: Rust backend + web frontend
-- 100% local processing
+**Solves:** Complex dbt projects → Visual understanding. Scattered docs → Interactive exploration. Cloud tools → Local desktop app.
 
 → **[Explore Semantic Tracer](https://github.com/sbdk-dev/semantic-tracer)**
 
----
-
 ### 4. 💬 [Local AI Analyst](https://github.com/sbdk-dev/local-ai-analyst) - Conversational Analytics
-**AI-Powered Data Analysis** | Python | Archived
+**Ask data questions in natural language—with statistical rigor** | Python | Archived
 
-Ask questions in natural language, get answers based on real query results with statistical rigor. Execution-first approach prevents AI hallucination.
+AI analyst that runs real queries first, then explains results. No hallucination—just actual data with confidence intervals.
 
-- Natural language queries
-- Statistical rigor: Significance testing and confidence intervals
-- Execution-first: Runs queries before generating insights
-- Multi-query workflows for complex analysis
+- Natural language → SQL → Results → Statistical analysis
+- Execution-first (prevents AI making up answers)
+- Automatic significance testing, confidence intervals
+
+**Solves:** AI hallucination → Execution-first validation. Unreliable insights → Statistical rigor. SQL expertise needed → Natural language queries.
 
 → **[Explore Local AI Analyst](https://github.com/sbdk-dev/local-ai-analyst)**
 
----
+### 5. 🔌 [knowDB](https://github.com/sbdk-dev/knowDB) - AI Assistant Integration
+**Query your data through Claude Desktop or ChatGPT** | Python | Archived
 
-### 5. 🔌 [knowDB](https://github.com/sbdk-dev/knowDB) - Integration Layer
-**MCP Integration** | Python | Archived
+MCP server connecting local data to AI assistants. Ask questions in Claude Desktop, get real query results.
 
-Connects everything to AI assistants via MCP (Model Context Protocol). Query your data through Claude Desktop or ChatGPT Desktop.
+- MCP (Model Context Protocol) server implementation
+- Works with Claude Desktop, ChatGPT Desktop, any MCP client
+- Auto-sync dbt semantic layer
 
-- MCP integration: Works with Claude, ChatGPT, and any MCP client
-- dbt auto-sync: Automatic semantic layer synchronization
-- Natural language queries through AI assistants
-- Full local processing
+**Solves:** Separate tools for data/AI → Unified interface. Complex queries → Natural language. Context switching → Query from chat.
 
 → **[Explore knowDB](https://github.com/sbdk-dev/knowDB)**
 
----
+**Documentation Hub**
 
-## 🏠 Website & Hub
-
-### [sbdk.dev](https://github.com/sbdk-dev/sbdk.dev) - Ecosystem Website
-**Next.js Website** | TypeScript | Active
-
-The central hub showcasing the ecosystem with architecture diagrams, getting started guides, and comprehensive documentation.
+### 6. 🌐 [sbdk.dev](https://github.com/sbdk-dev/sbdk.dev) - This Website
+**Central hub with architecture guides and getting started** | Next.js | Active
 
 → **[Visit sbdk.dev](https://sbdk.dev)** | **[View Source](https://github.com/sbdk-dev/sbdk.dev)**
 
 ---
 
-## 🎯 Why These Projects?
+## What You Get From These Projects
 
-### Complete Stack
-Start with raw data, transform it, analyze it with ML, visualize relationships, and query it conversationally—all without cloud dependencies.
+**Complete working code** (not tutorials):
+- ✅ Run everything locally—no Docker, no cloud accounts
+- ✅ See how DLT, dbt, DuckDB, Rust, and MCP actually fit together
+- ✅ Production patterns you can adapt (CLI architecture, exception handling, testing)
+- ✅ MIT licensed—fork and use however you want
 
-### Reference Implementations
-Each project is production-quality, fully documented, and demonstrates best practices for local-first development.
-
-### Fork-Friendly
-MIT licensed and designed to be adapted. Take what works, modify what doesn't, and build your own tools.
-
-### Proven Patterns
-- **Local-first architecture**: Zero cloud dependencies
-- **Modern data stack**: DLT, dbt, DuckDB
-- **Rust performance**: High-performance native extensions
-- **MCP integration**: Connect to AI assistants
-- **Statistical rigor**: Execution-first, preventing AI hallucination
+**Technologies & patterns demonstrated:**
+- **Local-first data pipelines**: DuckDB + dbt + DLT running on your laptop
+- **Professional CLI design**: Typer + Rich + Pydantic with exception hierarchies
+- **Rust database extensions**: High-performance DuckDB extensions
+- **MCP server patterns**: Connect data tools to AI assistants
+- **Desktop apps with Tauri**: Rust backend + React frontend
+- **Statistical rigor**: Execution-first AI to prevent hallucination
 
 ---
 
@@ -131,46 +168,45 @@ All projects include complete documentation, real-world examples, and comprehens
 
 ---
 
-## 📚 Documentation
+## Why Archived?
 
-- **[Architecture Overview](https://sbdk.dev#architecture)** - How the ecosystem fits together
-- **[Getting Started Guide](https://sbdk.dev#getting-started)** - Fork and build your own
-- **Individual Project READMEs** - Detailed documentation in each repo
-- **[Website](https://sbdk.dev)** - Central hub with guides and examples
+These are **complete, stable reference implementations**—not active products. They're archived because they're *done*: production-quality code demonstrating proven patterns.
 
----
-
-## 🤝 Contributing
-
-These projects are archived as reference implementations (November 2025). We welcome:
-
-✅ Bug reports for critical issues
-✅ Documentation improvements
-✅ Security issue reports
-
-For new features, we encourage forking and building your own! Share your forks by opening an issue—we'd love to see what you create.
+Perfect for:
+- **Forking** and adapting for your own projects
+- **Learning** from real, working code (not tutorials)
+- **Understanding** how modern data tools fit together
 
 ---
 
-## 📜 License
+## 🚀 Quick Start
 
-All projects are **MIT licensed**. Use them however you want, commercially or personally, with or without attribution.
+```bash
+# Start with the foundation
+git clone https://github.com/sbdk-dev/sbdk-dev
+cd sbdk-dev
+pip install -e .
+sbdk init my-project
+```
+
+**Or pick a specific project:**
+- Data pipelines → [SBDK.dev](https://github.com/sbdk-dev/sbdk-dev)
+- ML in SQL → [Mallard](https://github.com/sbdk-dev/local-inference)
+- dbt visualization → [Semantic Tracer](https://github.com/sbdk-dev/semantic-tracer)
+- AI analytics → [Local AI Analyst](https://github.com/sbdk-dev/local-ai-analyst)
+- MCP integration → [knowDB](https://github.com/sbdk-dev/knowDB)
 
 ---
 
-## 🔗 Links
+## 📚 Learn More
 
-- **Website**: [sbdk.dev](https://sbdk.dev)
-- **Organization**: [github.com/sbdk-dev](https://github.com/sbdk-dev)
-- **Issues**: [Report issues](https://github.com/sbdk-dev/sbdk.dev/issues)
+**[→ Visit sbdk.dev](https://sbdk.dev)** for architecture diagrams, use cases, and getting started guides
+
+**[→ Browse all repositories](https://github.com/orgs/sbdk-dev/repositories)** to explore individual projects
 
 ---
 
-## 💡 Philosophy
-
-**Evidence over assumptions** • **Code over documentation** • **Local-first over cloud-dependent** • **Simple over clever** • **Open source over proprietary**
-
-Built to demonstrate how powerful analytics tools can run entirely on your laptop, maintaining complete privacy and control over your data.
+<sub>MIT Licensed • Open Source • Archived Nov 2025 as reference implementations</sub>
 
 ---
 
